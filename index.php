@@ -18,7 +18,7 @@ include('config.php');
     </form>
 
     <?php
-    if (isset($_POST['submit2'])) {
+    if (isset($_POST['search'])) {
         $name = $_GET['search'];
 
         $sql4 = "SELECT * FROM employee WHERE `name` LIKE :name";
