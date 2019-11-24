@@ -3,16 +3,16 @@ include('config.php');
 ?>
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quiz 2</title>
 </head>
-<body>
 
-    
+<body>
 
     <?php
     if (isset($_POST['search'])) {
@@ -29,13 +29,13 @@ include('config.php');
         if ($query4->rowCount() > 0) {
 
             foreach ($result as $row) {
-                echo $row["id"];
-                echo $row["name"];
-                echo $row["dept"];
-                echo $row["salary"];
-                echo $row["creationdate"];
-                echo $row["rank"];
-                echo $row["leavec"];
+                echo $row->id;
+                echo $row->name;
+                echo $row->dept;
+                echo $row->salary;
+                echo $row->creationdate;
+                echo $row->rank;
+                echo $row->leavec;
             }
         } else {
             echo 'There is nothing to show';
@@ -44,7 +44,7 @@ include('config.php');
     }
     ?>
 
-<form action="" method="get">
+    <form action="" method="get">
         Search: <input type="search" name="search"><br>
         <input type="submit" name="search" value="Search">
     </form>
@@ -64,18 +64,18 @@ include('config.php');
 
     <table>
         <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Dept</th>
-            <th>Salary</th>
-            <th>Join Date</th>
-            <th>Rank</th>
-            <th>Leave Count</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Dept</th>
+                <th>Salary</th>
+                <th>Join Date</th>
+                <th>Rank</th>
+                <th>Leave Count</th>
+            </tr>
         </thead>
         <tbody>
-        <?php
+            <?php
         //include "config.php";
         if (isset($_POST['submit'])) {
             $value = $_POST['sel'];
@@ -91,16 +91,16 @@ include('config.php');
             if ($query5->rowCount() > 0) {
                 foreach ($results as $result5) {
                     ?>
-                    <tr>
-                        <th><?php echo htmlentities($cnt); ?></th>
-                        <td><?php echo htmlentities($result5->name); ?></td>
-                        <td><?php echo htmlentities($result5->dept); ?></td>
-                        <td><?php echo htmlentities($result5->salary); ?></td>
-                        <td><?php echo htmlentities($result5->creationdate); ?></td>
-                        <td><?php echo htmlentities($result5->rank); ?></td>
-                        <td><?php echo htmlentities($result5->leavec); ?></td>
-                    </tr>
-                    <?php $cnt = $cnt + 1;
+            <tr>
+                <th><?php echo htmlentities($cnt); ?></th>
+                <td><?php echo htmlentities($result5->name); ?></td>
+                <td><?php echo htmlentities($result5->dept); ?></td>
+                <td><?php echo htmlentities($result5->salary); ?></td>
+                <td><?php echo htmlentities($result5->creationdate); ?></td>
+                <td><?php echo htmlentities($result5->rank); ?></td>
+                <td><?php echo htmlentities($result5->leavec); ?></td>
+            </tr>
+            <?php $cnt = $cnt + 1;
                 }
             }
         } ?>
@@ -110,4 +110,5 @@ include('config.php');
 
 
 </body>
+
 </html>
