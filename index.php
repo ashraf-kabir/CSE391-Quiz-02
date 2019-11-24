@@ -8,7 +8,7 @@ include('config.php');
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Quiz 2</title>
 </head>
 <body>
 
@@ -75,20 +75,19 @@ include('config.php');
         if (isset($_POST['submit'])) {
             $value = $_POST['sel'];
 
-
             $sql5 = "SELECT * FROM employee ORDER BY :value";
             $query5 = $dbh->prepare($sql5);
 
             $query5->bindParam(':value', $value, PDO::PARAM_STR);
 
             $query5->execute();
-
-
+            $results = $query5->fetchAll(PDO::FETCH_OBJ);
+            $cnt = 1;
             if ($query5->rowCount() > 0) {
                 foreach ($results as $result5) {
                     ?>
                     <tr>
-                        <th scope="row"><?php echo htmlentities($cnt); ?></th>
+                        <th><?php echo htmlentities($cnt); ?></th>
                         <td><?php echo htmlentities($result5->name); ?></td>
                         <td><?php echo htmlentities($result5->dept); ?></td>
                         <td><?php echo htmlentities($result5->salary); ?></td>
