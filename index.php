@@ -12,10 +12,7 @@ include('config.php');
 </head>
 <body>
 
-    <form action="" method="get">
-        Search: <input type="search" name="search"><br>
-        <input type="submit" name="search" value="Search">
-    </form>
+    
 
     <?php
     if (isset($_POST['search'])) {
@@ -23,7 +20,8 @@ include('config.php');
 
         $sql4 = "SELECT * FROM employee WHERE `name` LIKE :name";
         $query4 = $dbh->prepare($sql4);
-        $query4->bindValue(':name', '%' . $name . '%', PDO::PARAM_INT);
+        $name = "%".$name."%";
+        $query4->bindParam(':name', $name, PDO::PARAM_STR);
         //$query4->bindParam(':name', $name, PDO::PARAM_STR);
         $query4->execute();
         //$result = $query4->fetchAll();
@@ -45,6 +43,13 @@ include('config.php');
 
     }
     ?>
+
+<form action="" method="get">
+        Search: <input type="search" name="search"><br>
+        <input type="submit" name="search" value="Search">
+    </form>
+
+
     <br><br>
     <form action="" method="post">
         <select name="sel" id="sel">
