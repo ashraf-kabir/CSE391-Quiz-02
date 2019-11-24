@@ -48,7 +48,7 @@ include('config.php');
     <br><br>
     <form action="" method="post">
         <select name="sel" id="sel">
-            <option value="">--Select--</option>
+            <option>--Select--</option>
             <option value="salary">Salary</option>
             <option value="rank">Rank</option>
             <option value="leavec">Leave</option>
@@ -75,7 +75,7 @@ include('config.php');
         if (isset($_POST['submit'])) {
             $value = $_POST['sel'];
 
-            $sql5 = "SELECT * FROM employee ORDER BY :value";
+            $sql5 = "SELECT * FROM employee ORDER BY :value DESC";
             $query5 = $dbh->prepare($sql5);
 
             $query5->bindParam(':value', $value, PDO::PARAM_STR);
