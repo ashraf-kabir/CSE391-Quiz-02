@@ -11,108 +11,10 @@ include('config.php');
     <title>Document</title>
 </head>
 <body>
-    <h3>Order by Salary</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Salary</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-
-        $sql = "SELECT * FROM employee ORDER BY salary ASC";
-        $query = $dbh->prepare($sql);
-        $query->execute();
-        $results = $query->fetchAll(PDO::FETCH_OBJ);
-        $cnt = 1;
-        if ($query->rowCount() > 0) {
-            foreach ($results as $result) {
-                ?>
-                <tr>
-                    <th scope="row"><?php echo htmlentities($cnt); ?></th>
-                    <td><?php echo htmlentities($result->name); ?></td>
-                    <td><?php echo htmlentities($result->salary); ?></td>
-                </tr>
-                <?php $cnt = $cnt + 1;
-            }
-        } ?>
-        </tbody>
-
-    </table>
-    <br>
-    <h3>Order by Rank</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Rank</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-
-        $sql = "SELECT * FROM employee ORDER BY rank ASC";
-        $query = $dbh->prepare($sql);
-        $query->execute();
-        $results = $query->fetchAll(PDO::FETCH_OBJ);
-        $cnt = 1;
-        if ($query->rowCount() > 0) {
-            foreach ($results as $result) {
-                ?>
-                <tr>
-                    <th scope="row"><?php echo htmlentities($cnt); ?></th>
-                    <td><?php echo htmlentities($result->name); ?></td>
-                    <td><?php echo htmlentities($result->rank); ?></td>
-                </tr>
-                <?php $cnt = $cnt + 1;
-            }
-        } ?>
-        </tbody>
-
-    </table>
-    <br>
-    <h3>Order by Leave Count</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>Name</th>
-            <th>Leave Count</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-
-        $sql = "SELECT * FROM employee ORDER BY leavec DESC";
-        $query = $dbh->prepare($sql);
-        $query->execute();
-        $results = $query->fetchAll(PDO::FETCH_OBJ);
-        $cnt = 1;
-        if ($query->rowCount() > 0) {
-            foreach ($results as $result) {
-                ?>
-                <tr>
-                    <th scope="row"><?php echo htmlentities($cnt); ?></th>
-                    <td><?php echo htmlentities($result->name); ?></td>
-                    <td><?php echo htmlentities($result->leavec); ?></td>
-                </tr>
-                <?php $cnt = $cnt + 1;
-            }
-        } ?>
-        </tbody>
-
-    </table>
-
-    <br><br><br>
-
 
     <form action="" method="post">
         Search: <input type="search" name="search"><br>
-        <input type="submit2">
+        <input type="submit" name="search" value="Search">
     </form>
 
     <?php
@@ -146,6 +48,7 @@ include('config.php');
     <br><br>
     <form action="" method="post">
         <select name="sel" id="sel">
+            <option value="">--Select--</option>
             <option value="salary">Salary</option>
             <option value="rank">Rank</option>
             <option value="leavec">Leave</option>
