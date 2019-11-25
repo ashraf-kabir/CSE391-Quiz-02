@@ -14,44 +14,39 @@ include('config.php');
 
 <body>
 
+    <form method="post">
+        Search: <input type="search" name="search"><br>
+        <input type="submit" name="submit1" value="Search">
+    </form>
+
     <?php
-    if (isset($_POST['search'])) {
-        $name = $_GET['search'];
 
+    if (isset($_POST['submit1'])) {
+        $name = $_POST['search'];
         $sql4 = "SELECT * FROM employee WHERE `name` LIKE :name";
+        $name = "%$name%";
         $query4 = $dbh->prepare($sql4);
-        $name = "%".$name."%";
-        $query4->bindParam(':name', $name, PDO::PARAM_STR);
-        //$query4->bindParam(':name', $name, PDO::PARAM_STR);
+        $query4->bindValue(':name', $name);
         $query4->execute();
-        //$result = $query4->fetchAll();
-        $result = $query4->fetchAll();
+        $result = $query4->fetchAll(PDO::FETCH_ASSOC);
         if ($query4->rowCount() > 0) {
-
             foreach ($result as $row) {
-                echo $row->id;
-                echo $row->name;
-                echo $row->dept;
-                echo $row->salary;
-                echo $row->creationdate;
-                echo $row->rank;
-                echo $row->leavec;
+                echo $row['id'];
+                echo $row['name'];
+                echo $row['dept'];
+                echo $row['salary'];
+                echo $row['creationdate'];
+                echo $row['rank'];
+                echo $row['leavec'];
             }
         } else {
             echo 'There is nothing to show';
         }
-
     }
     ?>
 
-    <form action="" method="get">
-        Search: <input type="search" name="search"><br>
-        <input type="submit" name="search" value="Search">
-    </form>
-
-
     <br><br>
-    <form action="" method="post">
+    <form method="post">
         <select name="sel" id="sel">
             <option>--Select--</option>
             <option value="salary">Salary</option>
@@ -60,7 +55,6 @@ include('config.php');
         </select>
         <input type="submit" name="submit" value="Submit">
     </form>
-
 
     <table>
         <thead>
@@ -75,8 +69,8 @@ include('config.php');
             </tr>
         </thead>
         <tbody>
-            <?php
-        //include "config.php";
+        
+        <?php
         if (isset($_POST['submit'])) {
             $value = $_POST['sel'];
 
@@ -105,9 +99,7 @@ include('config.php');
             }
         } ?>
         </tbody>
-
     </table>
-
 
 </body>
 
