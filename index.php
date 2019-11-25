@@ -20,7 +20,6 @@ include('config.php');
     </form>
 
     <?php
-
     if (isset($_POST['submit1'])) {
         $name = $_POST['search'];
         $sql4 = "SELECT * FROM employee WHERE `name` LIKE :name";
