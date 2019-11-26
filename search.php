@@ -12,7 +12,20 @@ include('config.php');
 </head>
 
 <body>
-    <?php
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Dept</th>
+                <th>Salary</th>
+                <th>Join Date</th>
+                <th>Rank</th>
+                <th>Leave Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
     if (isset($_POST['submit1'])) {
         $name = $_POST['search'];
         $sql = "SELECT * FROM employee WHERE `name` LIKE :name";
@@ -29,20 +42,23 @@ include('config.php');
                 $salary = $row['salary'];
                 $joindate = $row['creationdate'];
                 $rank = $row['rank'];
-                $leavecount = $row['leavec'];
-                echo $id;
-                echo $username;
-                echo $dept;
-                echo $salary;
-                echo $joindate;
-                echo $rank;
-                echo $leavecount;
+                $leavecount = $row['leavec']; ?>
+            <tr>
+                <td><?php echo $id; ?></td>
+                <td><?php echo $username; ?></td>
+                <td><?php echo $dept; ?></td>
+                <td><?php echo $salary; ?></td>
+                <td><?php echo $joindate; ?></td>
+                <td><?php echo $rank; ?></td>
+                <td><?php echo $leavecount; ?></td>
+            </tr>
+            <?php
             }
-        } else {
-            echo 'There is nothing to show';
         }
     }
     ?>
+        </tbody>
+    </table>
 </body>
 
 </html>
