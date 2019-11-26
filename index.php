@@ -14,35 +14,10 @@ include('config.php');
 
 <body>
 
-    <form method="post">
+    <form action="search.php" method="post">
         Search: <input type="search" name="search"><br>
         <input type="submit" name="submit1" value="Search">
     </form>
-
-    <?php
-    if (isset($_POST['submit1'])) {
-        $name = $_POST['search'];
-        $sql4 = "SELECT * FROM employee WHERE `name` LIKE :name";
-        $name = "%$name%";
-        $query4 = $dbh->prepare($sql4);
-        $query4->bindValue(':name', $name);
-        $query4->execute();
-        $result = $query4->fetchAll(PDO::FETCH_ASSOC);
-        if ($query4->rowCount() > 0) {
-            foreach ($result as $row) {
-                echo $row['id'];
-                echo $row['name'];
-                echo $row['dept'];
-                echo $row['salary'];
-                echo $row['creationdate'];
-                echo $row['rank'];
-                echo $row['leavec'];
-            }
-        } else {
-            echo 'There is nothing to show';
-        }
-    }
-    ?>
 
     <br><br>
     <form method="post">
