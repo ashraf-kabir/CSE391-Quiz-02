@@ -59,6 +59,8 @@ include('config.php');
     ?>
         </tbody>
     </table>
+    <br>
+    <p>Back to <a href="index.php">home</a></p>
 </body>
 
 </html>
