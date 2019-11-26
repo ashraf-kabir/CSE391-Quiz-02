@@ -10,14 +10,20 @@ if (isset($_POST['submit1'])) {
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
     if ($query->rowCount() > 0) {
         foreach ($results as $row) {
-            
-            echo $row['id'];
-            echo $row['name'];
-            echo $row['dept'];
-            echo $row['salary'];
-            echo $row['creationdate'];
-            echo $row['rank'];
-            echo $row['leavec'];
+            $id = $row['id'];
+            $username = $row['name'];
+            $dept = $row['dept'];
+            $salary = $row['salary'];
+            $joindate = $row['creationdate'];
+            $rank = $row['rank'];
+            $leavecount = $row['leavec'];
+            echo $id;
+            echo $username;
+            echo $dept;
+            echo $salary;
+            echo $joindate;
+            echo $rank;
+            echo $leavecount;
         }
     } else {
         echo 'There is nothing to show';
