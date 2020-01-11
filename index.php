@@ -48,7 +48,7 @@ include('config.php');
         if (isset($_POST['submit'])) {
             $value = $_POST['sel'];
 
-            $sql5 = "SELECT * FROM employee ORDER BY :value DESC";
+            $sql5 = "SELECT * FROM `employee` ORDER BY $value DESC";
             $query5 = $dbh->prepare($sql5);
 
             $query5->bindParam(':value', $value, PDO::PARAM_STR);
