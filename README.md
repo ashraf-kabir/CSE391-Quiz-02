@@ -4,6 +4,8 @@
 semester: fall 2019
 Brac University
 
-question given on the question folder
+question:
+1. wildcard search
+2. display asc/desc result based on Salary, Rank, Leave
 
-content: PHP MYSQL
+Language: PHP & MYSQL
